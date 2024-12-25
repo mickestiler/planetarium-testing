@@ -41,4 +41,12 @@ public class LoginPage {
         registrationLink.click();
     }
 
+    public void enterUsername(String username) {
+        usernameInput.sendKeys(username);
+    }
+
+    public void enterPassword(String password) {
+        passwordInput.sendKeys(password);
+    }
+
 }
