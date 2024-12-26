@@ -5,16 +5,17 @@ Feature: Planet and Moon Removal
     Given the user is logged in
 
   Scenario Outline: User removes a resource that exists in the database
-    When the user removes a <entity type> with name "<name>"
-    Then the <entity type> "<name>" should be removed from the database successfully
+    When the user removes a planet or moon with name "<name>"
+    Then the planet or moon "<name>" should be removed from the database successfully
+    And all associated moons should be removed if it is a planet "<entity type>"
     Examples:
       |entity type   | name |
       |planet   | Earth |
       |moon   | Titan |
 
   Scenario Outline: User attempts to remove a resource that is not in the database
-    When the user removes  a <entity type> with name "<name>"
-    Then the user should get a browser alert saying Invalid "<entity type>"
+    When the user removes a planet or moon with name "<name>"
+    Then the user should get a browser alert saying Invalid planet or moon <entity type>
     Examples:
        |entity type   | name |
        |planet   | NotRealPlanet |

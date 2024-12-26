@@ -1,7 +1,12 @@
 package com.revature.steps;
 
 import com.revature.TestRunner;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class LoginSteps {
@@ -13,12 +18,12 @@ public class LoginSteps {
 
     @When("the user provides a valid username for login")
     public void the_user_provides_a_valid_username_for_login() {
-        TestRunner.loginPage.enterUsername("Super_man-2001");
+        TestRunner.loginPage.enterUsername("Batman");
     }
 
     @When("the user provides a valid password for login")
     public void the_user_provides_a_valid_password_for_login() {
-        TestRunner.loginPage.enterPassword("Krypton-was_2000");
+        TestRunner.loginPage.enterPassword("Iamthenight1939");
     }
 
     @Then("the user should be able to securely interact with the Planetarium")
@@ -40,13 +45,14 @@ public class LoginSteps {
 
     @When("the user provides the password {string}")
     public void the_user_provides_the_password(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
     }
 
     @Then("the user should get a browser alert saying Invalid Credentials")
     public void the_user_should_get_a_browser_alert_saying_Invalid_Credentials() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        TestRunner.wait.until(ExpectedConditions.alertIsPresent());
+        Alert alert = TestRunner.driver.switchTo().alert();
+        Assert.assertEquals("Invalid Credentials", alert.getText());
+        alert.accept();
     }
 }

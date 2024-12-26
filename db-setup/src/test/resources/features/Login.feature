@@ -2,7 +2,7 @@
 Feature: User Login
   As a user I want to securely access my account so I can interact with the Planetarium in a secure environment
 
-  Background: Login Starting Actionse
+  Background: Login Starting Actions
     Given    the user tries to login
 
   Scenario: Users can register login with valid credentials
@@ -16,8 +16,7 @@ Feature: User Login
     Then    the user should get a browser alert saying Invalid Credentials
 
     Examples:
-      |username                         |password|
-      |Batman	                        |Iamthenight1939|
-      |Batman	                         |Krypton-was_2000|
-      |Robin                            |Iamthenight1939|
+      |username                         |password         |
+      |Batman	                        |Krypton-was_2000 |
+      |Robin                            |Iamthenight1939   |
       |Robin	                        |Krypton-was_2000  |

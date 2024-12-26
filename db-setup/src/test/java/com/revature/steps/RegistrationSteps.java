@@ -1,6 +1,7 @@
 package com.revature.steps;
 
 import com.revature.TestRunner;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -10,8 +11,12 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class RegistrationSteps {
 
+    @Given("the user is on the login page")
+    public void the_user_is_on_the_login_page() {
+        TestRunner.loginPage.openLoginPage();
+    }
 
-    @Given("the user clicks the register link")
+    @And("the user clicks the register link")
     public void the_user_clicks_the_register_link() {
         TestRunner.loginPage.clickRegistrationLink();
     }
