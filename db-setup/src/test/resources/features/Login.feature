@@ -11,8 +11,8 @@ Feature: User Login
     Then    the user should be able to securely interact with the Planetarium
 
   Scenario Outline: Users can not login with invalid credentials
-    When    the user provides username "<username>"
-    And     the user provides the password "<password>"
+    When    the user provides login username "<username>"
+    And     the user provides login password "<password>"
     Then    the user should get a browser alert saying Invalid Credentials
 
     Examples:

@@ -43,9 +43,14 @@ public class LoginSteps {
         }
     }
 
-    @When("the user provides the password {string}")
-    public void the_user_provides_the_password(String string) {
+    @When("the user provides login username {string}")
+    public void the_user_provides_login_username(String username) {
+        TestRunner.loginPage.enterUsername(username);
+    }
 
+    @And("the user provides login password {string}")
+    public void the_user_provides_login_password(String password) {
+        TestRunner.loginPage.enterPassword(password);
     }
 
     @Then("the user should get a browser alert saying Invalid Credentials")
