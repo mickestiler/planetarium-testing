@@ -33,6 +33,10 @@ public class LoginPage {
         loginButton.submit();
     }
 
+    public void clickLoginButton() {
+        loginButton.submit();
+    }
+
     public void openLoginPage(){
         driver.get("http://localhost:8080/");
     }

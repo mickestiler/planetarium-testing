@@ -28,6 +28,7 @@ public class LoginSteps {
 
     @Then("the user should be able to securely interact with the Planetarium")
     public void the_user_should_be_able_to_securely_interact_with_the_Planetarium() {
+        TestRunner.loginPage.clickLoginButton();
         try{
             TestRunner.wait.until(ExpectedConditions.titleIs("Home"));
             Assert.assertEquals(
@@ -53,11 +54,12 @@ public class LoginSteps {
         TestRunner.loginPage.enterPassword(password);
     }
 
-    @Then("the user should get a browser alert saying Invalid Credentials")
-    public void the_user_should_get_a_browser_alert_saying_Invalid_Credentials() {
+    @Then("the user should get a browser alert saying Invalid credentials")
+    public void the_user_should_get_a_browser_alert_saying_Invalid_credentials() {
+        TestRunner.loginPage.clickLoginButton();
         TestRunner.wait.until(ExpectedConditions.alertIsPresent());
         Alert alert = TestRunner.driver.switchTo().alert();
-        Assert.assertEquals("Invalid Credentials", alert.getText());
+        Assert.assertEquals("Invalid credentials", alert.getText());
         alert.accept();
     }
 }

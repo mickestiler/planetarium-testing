@@ -9,13 +9,25 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class RemoveSteps {
-    @When("the user removes a planet or moon with name {string}")
-    public void the_user_removes_a_planet_or_moon_with_name(String name) {
+    @When("the user removes a planet with name {string}")
+    public void the_user_removes_a_planet_with_name(String name) {
+        TestRunner.homePage.selectPlanet();
         TestRunner.homePage.deleteResource(name);
     }
 
-    @Then("the planet or moon {string} should be removed from the database successfully")
-    public void the_planet_or_moon_should_be_removed_from_the_database_successfully(String entityType, String name) {
+    @When("the user removes a moon with name {string}")
+    public void the_user_removes_a_moon_with_name(String name) {
+        TestRunner.homePage.selectMoon();
+        TestRunner.homePage.deleteResource(name);
+    }
+
+    @Then("the planet {string} should be removed from the database successfully")
+    public void the_planet_should_be_removed_from_the_database_successfully(String name) {
+        Assert.assertFalse(TestRunner.homePage.tableContains(name));
+    }
+
+    @Then("the moon {string} should be removed from the database successfully")
+    public void the_moon_should_be_removed_from_the_database_successfully(String name) {
         Assert.assertFalse(TestRunner.homePage.tableContains(name));
     }
 

@@ -34,6 +34,9 @@ public class HomePage {
     @FindBy(id = "deleteInput")
     private WebElement deleteInput;
 
+    @FindBy(id = "deleteButton")
+    private WebElement deleteButton;
+
     @FindBy(id = "planetImageInput")
     private WebElement planetImageInput;
 
@@ -45,6 +48,9 @@ public class HomePage {
 
     @FindBy(className = "submit-button")
     private WebElement submitButton;
+
+    @FindBy(id = "celestialTable")
+    private WebElement celestialTable;
 
     public HomePage(WebDriver driver){
         this.driver = driver;
@@ -88,7 +94,17 @@ public class HomePage {
 
     public void enterMoonImage() {
         String filePath = "C:\\Users\\micke\\OneDrive\\Desktop\\Revature Paid Training\\Project1\\Project1ME\\db-setup\\src\\test\\resources\\Celestial-Images\\moon-3.jpg";
+        moonImageInput.sendKeys(filePath);
+    }
+
+    public void enterInvalidPlanetImage() {
+        String filePath = "C:\\Users\\micke\\OneDrive\\Desktop\\Revature Paid Training\\Project1\\Project1ME\\db-setup\\src\\test\\resources\\Celestial-Images\\video.wmv";
         planetImageInput.sendKeys(filePath);
+    }
+
+    public void enterInvalidMoonImage() {
+        String filePath = "C:\\Users\\micke\\OneDrive\\Desktop\\Revature Paid Training\\Project1\\Project1ME\\db-setup\\src\\test\\resources\\Celestial-Images\\video.wmv";
+        moonImageInput.sendKeys(filePath);
     }
 
     public void enterOrbitedPlanetId(String id) {
@@ -102,14 +118,18 @@ public class HomePage {
 
     public void deleteResource(String name) {
         deleteInput.sendKeys(name);
+        deleteButton.click();
     }
 
     public void logout(){
         logoutButton.click();
     }
 
-    public boolean tableContains(String resource) {
-        return tableRows.contains(resource);
+    public boolean tableContains(String name) {
+        String tableText = celestialTable.getText();
+
+        return tableText.contains(name);
     }
+
 
 }

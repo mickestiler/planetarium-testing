@@ -13,7 +13,7 @@ Feature: User Login
   Scenario Outline: Users can not login with invalid credentials
     When    the user provides login username "<username>"
     And     the user provides login password "<password>"
-    Then    the user should get a browser alert saying Invalid Credentials
+    Then    the user should get a browser alert saying Invalid credentials
 
     Examples:
       |username                         |password         |
