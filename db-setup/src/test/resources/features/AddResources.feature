@@ -4,42 +4,69 @@ Feature: Planet and Moon Adding
   Background:
     Given the user is logged in
 
-  Scenario Outline: User adds a valid planet/moon to the database with the correct file type
-    When the user provides a name "<name>" for <entity type>
-    And the user provides a valid file type <file type>
-    Then the <entity type> "<name>" should be created successfully in the database
+  Scenario Outline: User adds a valid planet to the database with the correct file type
+    When the user provides a planet with name "<name>"
+    And the user provides file type "<file type>"
+    Then the planet or moon "<name>" should be created successfully in the database
     Examples:
-    |name                           |entity type                          |file type|
-    |a                              |planet	                              |null|
-    |thisisthirtylettersthatisvalid |planet	                              |null|
-    |eternal atake                  |planet	                              |null|
-    |eternal atake                  |planet	                              |null|
-    |b                              |moon	                              |null|
-    |thisisthirtylettersthatisvalid |moon	                              |null|
-      |eternal atake                  |moon                              |null|
-    |eternal atake                  |moon	                              |null|
-    |a                              |planet	                              |jpg|
-    |thisisthirtylettersthatisvalid |planet	                              |jpg|
-    |eternal atake                  |planet	                              |jpg|
-    |eternal atake                  |planet	                              |jpg|
-    |b                              |moon	                              |jpg|
-    |thisisthirtylettersthatisvalid |moon	                              |jpg|
-    |eternal atake                  |moon                                 |jpg|
-    |eternal atake                  |moon	                              |jpg|
+    |name                           |file type|
+    |a                              |null|
+    |thisisthirtylettersthatisvalid |null|
+    |eternal atake                  |null|
+    |eternal atake                  |null|
+    |a                              |jpg|
+    |thisisthirtylettersthatisvalid |jpg|
+    |eternal atake                  |jpg|
+    |eternal atake                  |jpg|
 
-  Scenario Outline: User provides an invalid planet/moon to the database
-    When the user provides a name "<name>" for <entity type>
-    Then  the user should get a browser alert saying Invalid "<entity type>" "<name>"
+
+  Scenario Outline: User provides a valid moon to the database with a valid orbited planet id
+    When the user provides a moon with name "<name>"
+    And the user provides file type "<file type>"
+    And the user provides an orbited planet id "<id>"
+    Then the moon "<name>" should be created successfully in the database
     Examples:
-      |entity type                        |name|
-      |planet	                          ||
-      |planet                              |thisisthirtylettersthatsinvalid|
-      |planet	                          |!|
-      |planet                            |Earth|
-      |moon	                            |thisisthirtylettersthatsinvalid|
-      |moon                              | |
-      |moon	                            |?|
-      |moon                             |Titan|
+      |name                              |file type|
+      |b                               |null|
+      |thisisthirtylettersthatisvalid  |null|
+      |eternal atake                 |null|
+      |eternal atake                   |null|
+      |b                               |jpg|
+      |thisisthirtylettersthatisvalid  |jpg|
+      |eternal atake                     |jpg|
+      |eternal atake                   |jpg|
+
+
+
+
+  Scenario Outline: User provides an invalid planet to the database
+    When the user provides a planet with name "<name>"
+    Then  the user should get a browser alert saying Invalid planet name
+    Examples:
+      |name|
+      ||
+      |thisisthirtylettersthatsinvalid|
+      |!|
+      |Earth|
+      |thisisthirtylettersthatsinvalid|
+      | |
+      |?|
+      |Titan|
+
+  Scenario Outline: User provides an invalid moon to the database
+    When the user provides a moon with name "<name>"
+    And the user provides an orbited planet id "<id>"
+    Then the user should get a browser alert saying "<alert>"
+    Examples:
+      |name                           |id | alert             |
+      |thisisthirtylettersthatsinvalid|1  |"Invalid moon name"|
+      |                               |1  |"Invalid moon name"|
+      |?                              |1  |"Invalid moon name"|
+      |Titan                          |1  |"Invalid moon name"|
+      |thisisthirtylettersthatsinvalid|10  |"Invalid planet id"|
+      |                               |10  |"Invalid planet id"|
+      |?                              |10  |"Invalid planet id"|
+      |Titan                          |10  |"Invalid planet id"|
 
   Scenario Outline: User provides a valid planet/moon with the incorrect file type
     When the user provides a valid name for <entity type>

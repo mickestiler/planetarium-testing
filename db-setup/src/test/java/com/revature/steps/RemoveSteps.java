@@ -23,7 +23,7 @@ public class RemoveSteps {
     public void the_user_should_get_a_browser_alert_saying_Invalid_planet_or_moon(String entityType) {
         TestRunner.wait.until(ExpectedConditions.alertIsPresent());
         Alert alert = TestRunner.driver.switchTo().alert();
-        Assert.assertEquals("Invalid " + entityType + "name", alert.getText());
+        Assert.assertEquals("Invalid " + entityType + " name", alert.getText());
         alert.accept();
     }
 

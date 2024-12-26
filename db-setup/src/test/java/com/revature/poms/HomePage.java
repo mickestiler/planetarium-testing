@@ -25,9 +25,6 @@ public class HomePage {
     @FindBy(id = "locationSelect")
     private WebElement planetMoonSelect;
 
-    @FindBy(id = "moonNameInput")
-    private WebElement moonName;
-
     @FindBy(id = "planetNameInput")
     private WebElement planetNameInput;
 
@@ -37,6 +34,17 @@ public class HomePage {
     @FindBy(id = "deleteInput")
     private WebElement deleteInput;
 
+    @FindBy(id = "planetImageInput")
+    private WebElement planetImageInput;
+
+    @FindBy(id = "moonImageInput")
+    private WebElement moonImageInput;
+
+    @FindBy(id = "orbitedPlanetInput")
+    private WebElement orbitedPlanetInput;
+
+    @FindBy(className = "submit-button")
+    private WebElement submitButton;
 
     public HomePage(WebDriver driver){
         this.driver = driver;
@@ -72,6 +80,25 @@ public class HomePage {
     public void enterMoonName(String moonName) {
         moonNameInput.sendKeys(moonName);
     }
+
+    public void enterPlanetImage() {
+        String filePath = "C:\\Users\\micke\\OneDrive\\Desktop\\Revature Paid Training\\Project1\\Project1ME\\db-setup\\src\\test\\resources\\Celestial-Images\\planet-3.jpg";
+        planetImageInput.sendKeys(filePath);
+    }
+
+    public void enterMoonImage() {
+        String filePath = "C:\\Users\\micke\\OneDrive\\Desktop\\Revature Paid Training\\Project1\\Project1ME\\db-setup\\src\\test\\resources\\Celestial-Images\\moon-3.jpg";
+        planetImageInput.sendKeys(filePath);
+    }
+
+    public void enterOrbitedPlanetId(String id) {
+        orbitedPlanetInput.sendKeys(id);
+    }
+
+    public void submitResource() {
+        submitButton.click();
+    }
+
 
     public void deleteResource(String name) {
         deleteInput.sendKeys(name);

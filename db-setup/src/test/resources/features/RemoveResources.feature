@@ -15,7 +15,7 @@ Feature: Planet and Moon Removal
 
   Scenario Outline: User attempts to remove a resource that is not in the database
     When the user removes a planet or moon with name "<name>"
-    Then the user should get a browser alert saying Invalid planet or moon <entity type>
+    Then  the user should get a browser alert saying Invalid "<entity type>" name
     Examples:
        |entity type   | name |
        |planet   | NotRealPlanet |
