@@ -85,11 +85,13 @@ public class AddSteps {
 
     @When("the user provides an invalid file type for planet")
     public void the_user_provides_an_invalid_file_type_for_planet() {
+        TestRunner.homePage.selectPlanet();
         TestRunner.homePage.enterInvalidPlanetImage();
     }
 
     @When("the user provides an invalid file type for moon")
     public void the_user_provides_an_invalid_file_type_for_moon() {
+        TestRunner.homePage.selectMoon();
         TestRunner.homePage.enterInvalidMoonImage();
     }
 
@@ -107,5 +109,6 @@ public class AddSteps {
     public void the_user_provides_a_valid_name_for_moon() {
         TestRunner.homePage.selectMoon();
         TestRunner.homePage.enterMoonName("majora moon");
+        TestRunner.homePage.enterOrbitedPlanetId("1");
     }
 }

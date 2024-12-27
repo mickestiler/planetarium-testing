@@ -54,15 +54,16 @@ Feature: Planet and Moon Adding
     And the user provides an orbited planet id "<id>"
     Then the user should get a browser alert saying alert: "<alert>"
     Examples:
-      |name                           |id | alert             |
+      |name                           |id | alert            |
       |thisisthirtylettersthatsinvalid|1  |Invalid moon name|
       |                               |1  |Invalid moon name|
       |?                              |1  |Invalid moon name|
       |Titan                          |1  |Invalid moon name|
-      |thisisthirtylettersthatsinvalid|0  |Invalid planet id|
-      |                               |0  |Invalid planet id|
-      |?                              |0  |Invalid planet id|
-      |Titan                          |0  |Invalid planet id|
+      |thisisthirtylettersthatsinvalid|0  |Invalid moon name|
+      |                               |0  |Invalid moon name|
+      |?                              |0  |Invalid moon name|
+      |Titan                          |0  |Invalid moon name|
+      |majora moon                    |0  |Invalid planet id|
 
   Scenario Outline: User provides a valid planet/moon with the incorrect file type
     When the user provides a valid name for <entity type>
